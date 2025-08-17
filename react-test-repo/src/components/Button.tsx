@@ -6,19 +6,40 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({ loading = false }) => {
   return (
-    <button disabled={loading}>
+    <button
+      disabled={loading}
+      style={{
+        backgroundColor: "#2c3e50", // Dark blue
+        color: "#ffffff", // White text
+        padding: "10px 20px",
+        border: "none",
+        borderRadius: "5px",
+        cursor: loading ? "not-allowed" : "pointer",
+        fontSize: "16px",
+        fontWeight: "bold",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minWidth: "100px", // Ensure a consistent width for better aesthetics
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+        transition: "background-color 0.3s ease", // Smooth transition for hover/active states
+      }}
+    >
       {loading ? (
-        <div
-          style={{
-            border: "2px solid #f3f3f3", /* Light grey */
-            borderTop: "2px solid #3498db", /* Blue */
-            borderRadius: "50%",
-            width: "16px",
-            height: "16px",
-            display: "inline-block",
-            verticalAlign: "middle" /* Align spinner vertically with text area */
-          }}
-        ></div>
+        <>
+          <div
+            style={{
+              border: "2px solid rgba(255, 255, 255, 0.3)", /* Transparent white for base */
+              borderTop: "2px solid #ffffff", /* White for spinner top */
+              borderRadius: "50%",
+              width: "16px",
+              height: "16px",
+              display: "inline-block",
+              verticalAlign: "middle",
+            }}
+          ></div>
+          <span style={{ marginLeft: "8px" }}>Loading...</span>
+        </>
       ) : (
         "Submit"
       )}
