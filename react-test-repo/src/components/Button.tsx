@@ -9,8 +9,8 @@ export const Button: React.FC<ButtonProps> = ({ loading = false }) => {
     <button
       disabled={loading}
       style={{
-        backgroundColor: "#FF8C00", // A vibrant, aesthetic orange
-        color: "#ffffff", // White text
+        backgroundColor: "#000000", // Changed to black for a sleek look
+        color: "#ffffff", // White text for contrast
         padding: "10px 20px",
         border: "none",
         borderRadius: "5px",
