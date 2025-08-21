@@ -9,7 +9,7 @@ export const Button: React.FC<ButtonProps> = ({ loading = false }) => {
     <button
       disabled={loading}
       style={{
-        backgroundColor: "#2196F3", // Changed to a vibrant blue
+        backgroundColor: "#F44336", // Changed to a vibrant red
         color: "#ffffff", // White text for contrast
         padding: "10px 20px",
         border: "none",
@@ -41,7 +41,7 @@ export const Button: React.FC<ButtonProps> = ({ loading = false }) => {
           <span style={{ marginLeft: "8px" }}>Loading...</span>
         </>
       ) : (
-        "I love kailin"
+        "SUBMIT"
       )}
     </button>
   );
