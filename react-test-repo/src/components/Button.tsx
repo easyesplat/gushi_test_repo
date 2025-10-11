@@ -1,10 +1,12 @@
+```tsx
 import React from "react";
+import { withProposalVariant } from "../../../src/probat/enableProbatEngine";
 
 interface ButtonProps {
   loading?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({ loading = false }) => {
+const Button: React.FC<ButtonProps> = ({ loading = false }) => {
   return (
     <button
       disabled={loading}
@@ -46,3 +48,7 @@ export const Button: React.FC<ButtonProps> = ({ loading = false }) => {
     </button>
   );
 };
+
+const Enhanced = withProposalVariant(Button, "cdde01b8-e450-4977-8b83-9055a63fe658");
+export default Enhanced;
+```
