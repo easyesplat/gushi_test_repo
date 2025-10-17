@@ -1,12 +1,12 @@
-```tsx
 import React from "react";
-import { withProposalVariant } from "../../../src/probat/enableProbatEngine";
+import { withExperiment } from "../../probat"; // adjust relative path
+import { PROBAT_COMPONENTS } from "../../probat";
 
 interface ButtonProps {
   loading?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ loading = false }) => {
+const ButtonControl: React.FC<ButtonProps> = ({ loading = false }) => {
   return (
     <button
       disabled={loading}
@@ -49,6 +49,17 @@ const Button: React.FC<ButtonProps> = ({ loading = false }) => {
   );
 };
 
-const Enhanced = withProposalVariant(Button, "cdde01b8-e450-4977-8b83-9055a63fe658");
-export default Enhanced;
-```
+
+// default proposalId should change    
+const probatExperimentKey = "Button";
+let Button = ButtonControl;
+
+if (PROBAT_COMPONENTS && probatExperimentKey in PROBAT_COMPONENTS) {
+  const proposalId = PROBAT_COMPONENTS[probatExperimentKey]?.proposalId;
+
+  if (proposalId) {
+    Button = withExperiment(ButtonControl, { proposalId });
+  }
+}
+
+export default Button;
