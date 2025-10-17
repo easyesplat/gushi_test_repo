@@ -1,5 +1,3 @@
-import { PROBAT_COMPONENTS } from "../../../probat";
-import { withExperiment } from "../../../probat";
 import React from "react";
 
 interface ButtonProps {
