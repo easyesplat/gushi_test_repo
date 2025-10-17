@@ -6,7 +6,7 @@ interface ButtonProps {
   loading?: boolean;
 }
 
-const ButtonControl: React.FC<ButtonProps> = ({ loading = false }) => {
+const Button: React.FC<ButtonProps> = ({ loading = false }) => {
   return (
     <button
       disabled={loading}
@@ -49,12 +49,4 @@ const ButtonControl: React.FC<ButtonProps> = ({ loading = false }) => {
   );
 };
 
-const probatExperimentKey = "react-test-repo/src/components/Button.tsx";
-let Button = ButtonControl;
-if (PROBAT_COMPONENTS && probatExperimentKey in PROBAT_COMPONENTS) {
-  const proposalId = PROBAT_COMPONENTS[probatExperimentKey]?.proposalId;
-  if (proposalId) {
-    Button = withExperiment(ButtonControl, { proposalId });
-  }
-}
 export default Button;
