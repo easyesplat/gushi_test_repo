@@ -1,6 +1,8 @@
 import React from 'react'
+import { withExperiment } from "../../../probat";
+import { PROBAT_COMPONENTS } from "../../../probat";
 
-const CallToAction: React.FC = () => {
+const CallToActionControl: React.FC = () => {
   return (
     <section className="cta section">
       <div className="container">
@@ -153,4 +155,12 @@ const CallToAction: React.FC = () => {
   )
 }
 
-export default CallToAction
+const probatExperimentKey = "react-test-repo/src/components/CallToAction.tsx";
+let CallToAction = CallToActionControl;
+if (PROBAT_COMPONENTS && probatExperimentKey in PROBAT_COMPONENTS) {
+  const proposalId = PROBAT_COMPONENTS[probatExperimentKey]?.proposalId;
+  if (proposalId) {
+    CallToAction = withExperiment(CallToActionControl, { proposalId });
+  }
+}
+export default CallToAction;
