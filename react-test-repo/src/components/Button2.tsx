@@ -1,11 +1,12 @@
-
+import { withExperiment } from "../../../probat";
+import { PROBAT_COMPONENTS } from "../../../probat";
 import React from "react";
 
 interface ButtonProps {
   loading?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ loading = false }) => {
+const ButtonControl: React.FC<ButtonProps> = ({ loading = false }) => {
   return (
     <button
       disabled={loading}
@@ -48,4 +49,12 @@ const Button: React.FC<ButtonProps> = ({ loading = false }) => {
   );
 };
 
+const probatExperimentKey = "react-test-repo/src/components/Button2.tsx";
+let Button = ButtonControl;
+if (PROBAT_COMPONENTS && probatExperimentKey in PROBAT_COMPONENTS) {
+  const proposalId = PROBAT_COMPONENTS[probatExperimentKey]?.proposalId;
+  if (proposalId) {
+    Button = withExperiment(ButtonControl, { proposalId });
+  }
+}
 export default Button;
