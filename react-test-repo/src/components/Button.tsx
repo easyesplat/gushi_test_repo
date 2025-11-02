@@ -52,7 +52,7 @@ const Button: React.FC<ButtonProps> = ({ loading = false }) => {
   );
 };
 
-// --- 👇 Replace this single line ---
+// Probat Generate Lines.
 export default (() => {
   const meta = PROBAT_COMPONENTS[__PROBAT_KEY__];
   const reg  = PROBAT_REGISTRIES[__PROBAT_KEY__] as Record<string, React.ComponentType<any>> | undefined;
