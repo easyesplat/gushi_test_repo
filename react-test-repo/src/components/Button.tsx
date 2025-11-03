@@ -1,9 +1,4 @@
 import React from "react";
-import { withExperiment } from "../../../probat/runtime";
-import { PROBAT_COMPONENTS, PROBAT_REGISTRIES } from "../../../probat";
-
-// You can hardcode or have your GitHub App auto-insert this
-const __PROBAT_KEY__ = "react-test-repo/src/components/Button.tsx";
 
 interface ButtonProps {
   loading?: boolean;
@@ -51,13 +46,3 @@ const Button: React.FC<ButtonProps> = ({ loading = false }) => {
     </button>
   );
 };
-
-// Probat Generate Lines.
-export default (() => {
-  const meta = PROBAT_COMPONENTS[__PROBAT_KEY__];
-  const reg  = PROBAT_REGISTRIES[__PROBAT_KEY__] as Record<string, React.ComponentType<any>> | undefined;
-  return (meta?.proposalId && reg)
-    ? withExperiment<typeof Button>(Button as any, { proposalId: meta.proposalId, registry: reg })
-    : Button;
-})();
-
