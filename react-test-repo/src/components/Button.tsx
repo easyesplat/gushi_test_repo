@@ -46,4 +46,3 @@ const Button: React.FC<ButtonProps> = ({ loading = false }) => {
     </button>
   );
 };
-
