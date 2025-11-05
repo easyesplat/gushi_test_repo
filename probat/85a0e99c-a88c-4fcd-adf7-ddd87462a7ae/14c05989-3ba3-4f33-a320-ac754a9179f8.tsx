@@ -1,19 +1,18 @@
 import React from "react";
-import { withExperiment } from "../../../probat/runtime";
-import { PROBAT_COMPONENTS, PROBAT_REGISTRIES } from "../../../probat/index";
-
-const __PROBAT_KEY__ = "react-test-repo/src/components/Button.tsx";
 
 interface ButtonProps {
   loading?: boolean;
+  label?: string;
+  onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ loading = false }) => {
+const Button: React.FC<ButtonProps> = ({ loading = false, label = "SUBMIT", onClick }) => {
   return (
     <button
       disabled={loading}
+      onClick={onClick}
       style={{
-        backgroundColor: "#F44336",
+        backgroundColor: "#B0B",
         color: "#ffffff",
         padding: "10px 20px",
         border: "none",
@@ -26,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({ loading = false }) => {
         justifyContent: "center",
         minWidth: "100px",
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-        transition: "background-color 0.3s ease",
+        transition: "background-color 0.3s ease"
       }}
     >
       {loading ? (
@@ -39,22 +38,16 @@ const Button: React.FC<ButtonProps> = ({ loading = false }) => {
               width: "16px",
               height: "16px",
               display: "inline-block",
-              verticalAlign: "middle",
+              verticalAlign: "middle"
             }}
           ></div>
           <span style={{ marginLeft: "8px" }}>Loading...</span>
         </>
       ) : (
-        "SUBMIT"
+        label
       )}
     </button>
   );
 };
 
-export default (() => {
-  const meta = PROBAT_COMPONENTS[__PROBAT_KEY__];
-  const reg  = PROBAT_REGISTRIES[__PROBAT_KEY__] as Record<string, React.ComponentType<any>> | undefined;
-  return (meta?.proposalId && reg)
-    ? withExperiment<any>(Button as any, { proposalId: meta.proposalId, registry: reg })
-    : Button;
-})();
+export default Button;
