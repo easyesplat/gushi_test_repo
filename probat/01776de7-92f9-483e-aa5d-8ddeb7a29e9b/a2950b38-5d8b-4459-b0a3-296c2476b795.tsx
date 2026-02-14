@@ -1,8 +1,5 @@
 import React from "react";
-import { withExperiment } from "../../../probat/runtime";
-import { PROBAT_COMPONENTS, PROBAT_REGISTRIES } from "../../../probat/index";
 
-const __PROBAT_KEY__ = "react-test-repo/src/components/Button.tsx";
 
 interface ButtonProps {
   loading?: boolean;
@@ -13,8 +10,8 @@ const Button: React.FC<ButtonProps> = ({ loading = false }) => {
     <button
       disabled={loading}
       style={{
-        backgroundColor: "#F44336",
-        color: "#ffffff",
+        backgroundColor: "#764BA2",
+        color: "#242424",
         padding: "10px 20px",
         border: "none",
         borderRadius: "5px",
@@ -33,8 +30,8 @@ const Button: React.FC<ButtonProps> = ({ loading = false }) => {
         <>
           <div
             style={{
-              border: "2px solid rgba(255, 255, 255, 0.3)",
-              borderTop: "2px solid #ffffff",
+              border: "2px solid rgba(36, 36, 36, 0.3)",
+              borderTop: "2px solid #242424",
               borderRadius: "50%",
               width: "16px",
               height: "16px",
@@ -50,11 +47,4 @@ const Button: React.FC<ButtonProps> = ({ loading = false }) => {
     </button>
   );
 };
-// Probat Generate Lines.
-export default (() => {
-  const meta = PROBAT_COMPONENTS[__PROBAT_KEY__];
-  const reg  = PROBAT_REGISTRIES[__PROBAT_KEY__] as Record<string, React.ComponentType<any>> | undefined;
-  return (meta?.proposalId && reg)
-    ? withExperiment<any>(Button as any, { proposalId: meta.proposalId, registry: reg })
-    : Button;
-})();
+export default Button;
